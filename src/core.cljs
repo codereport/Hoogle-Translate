@@ -156,10 +156,11 @@
     "'JetBrains Mono', monospace"))
 
 (def third-party-libraries
-  {"python"  ["RAPIDS cuDF" "pandas" "NumPy" "more-itertools"]
-   "c++"     ["range-v3" "boost::hana"]
-   "rust"    ["itertools"]
-   "clojure" ["core.matrix"]})
+  {"python"     ["RAPIDS cuDF" "pandas" "NumPy" "more-itertools"]
+   "c++"        ["range-v3" "boost::hana"]
+   "rust"       ["itertools"]
+   "javascript" ["ramda"]
+   "clojure"    ["core.matrix"]})
 
 (defn maybe-filter-third-party-libraries [coll]
   (filter (fn [item]

@@ -157,7 +157,7 @@
     "'JetBrains Mono', monospace"))
 
 (def default-hidden-languages
-  #{"Moon"})
+  #{"☾"})
 
 (def third-party-libraries
   {"python"     ["RAPIDS cuDF" "pandas" "NumPy" "more-itertools"]

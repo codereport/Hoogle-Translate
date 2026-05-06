@@ -15,7 +15,8 @@
                         :hidden-langs #{}
                         :settings-open false
                         :show-expressions false
-                        :show-libraries false}))
+                        :show-libraries false
+                        :show-hidden-languages false}))
 
 (defonce debug (r/atom {:info ""}))
 
@@ -155,6 +156,9 @@
     "Uiua" "'Uiua386', monospace"
     "'JetBrains Mono', monospace"))
 
+(def default-hidden-languages
+  #{"Moon"})
+
 (def third-party-libraries
   {"python"     ["RAPIDS cuDF" "pandas" "NumPy" "more-itertools"]
    "c++"        ["range-v3" "boost::hana"]
@@ -174,6 +178,12 @@
   (filter (fn [item]
             (or (:show-expressions @state)
                 (not (:expr item))))
+          coll))
+
+(defn maybe-filter-hidden-languages [coll]
+  (filter (fn [item]
+            (or (:show-hidden-languages @state)
+                (not (contains? default-hidden-languages (get-lang item)))))
           coll))
 
 (defn format-algorithm-with-fonts [algo-text lang is-expr]
@@ -433,6 +443,7 @@
                                          (filter-by-algo-id algo-id)
                                          (select-keys data/by-key-map)
                                          (vals)
+                                         (maybe-filter-hidden-languages)
                                          (maybe-filter-third-party-libraries)
                                          (maybe-filter-expressions))))
                                 algo-ids-with-names)
@@ -532,6 +543,7 @@
             (select-keys data/by-key-map)
             (vals)
             (remove #(contains? (:hidden-langs @state) (get-lang %)))
+            (maybe-filter-hidden-languages)
             (maybe-filter-third-party-libraries)
             (maybe-filter-expressions)
             (choose-colors how-to-generate-table)
@@ -611,6 +623,7 @@
                                         :settings-open (:settings-open current-state)
                                         :show-expressions (:show-expressions current-state)
                                         :show-libraries (:show-libraries current-state)
+                                        :show-hidden-languages (:show-hidden-languages current-state)
                                         :how-to-generate-table how-to-generate-table}))
                      ;; Update the results table after the state has been updated with the new theme
                      (when (and selection how-to-generate-table)
@@ -681,7 +694,25 @@
                                      (update-url (or (:search-text @state) selection) how-to-generate-table)
                                      (swap! state assoc :results-table
                                             (generate-table selection how-to-generate-table))))))}]
-         " Show Third Party Libraries"]]])))
+         " Show Third Party Libraries"]]
+       [:div {:style {:margin "5px 0"
+               :text-align "left"}}
+        [:label {:style {:font-family "'JetBrains Mono', monospace"
+                         :color (:text colors)
+                         :margin-left "5px"
+                         :user-select "none"}}
+         [:input {:type "checkbox"
+                  :checked (@state :show-hidden-languages)
+                  :on-change (fn [_]
+                               (swap! state update :show-hidden-languages not)
+                               (when (= (@state :top-padding) "20px")
+                                 (let [selection (or (:selection @state) (:search-text @state))
+                                       how-to-generate-table (:how-to-generate-table @state)]
+                                   (when (and selection how-to-generate-table)
+                                     (update-url (or (:search-text @state) selection) how-to-generate-table)
+                                     (swap! state assoc :results-table
+                                            (generate-table selection how-to-generate-table))))))}]
+         " Show Hidden Languages"]]])))
 
 (defn perform-search 
   ([search-text current-theme]

@@ -140,6 +140,15 @@
   (map last (filter (partial first-equals sig)
                     (map vector (map get-sig (vals m)) (keys m)))))
 
+(defn set-input-value! [value]
+  (when-let [input (js/document.getElementById "search-input")]
+    (set! (.-value input) (or value ""))))
+
+(defn get-algo-name-for-id [id]
+  (let [matching-keys (filter-by-algo-id id data/by-key-map)]
+    (when (seq matching-keys)
+      (get-algo (get data/by-key-map (first matching-keys))))))
+
 (def tr-hover-style {::stylefy/mode {:hover {:background-color "purple"}}})
 
 (declare generate-table perform-search)
@@ -245,7 +254,8 @@
                                  :hidden-langs (:hidden-langs @state)
                                  :selection algo-id
                                  :how-to-generate-table :by-algo-id
-                                 :results-table (generate-table algo-id :by-algo-id)})))))
+                                 :results-table (generate-table algo-id :by-algo-id)}))
+            (set-input-value! (get info-map :algo)))))
       ::stylefy/mode {:on-hover {:background-color (:hover colors)}}}
      [:td {:on-click (fn [e]
                        (.stopPropagation e)
@@ -256,7 +266,8 @@
                                                :theme current-theme
                                                :selection lang-name
                                                :how-to-generate-table :by-lang
-                                               :results-table (generate-table lang-name :by-lang)}))))}
+                                               :results-table (generate-table lang-name :by-lang)}))
+                         (set-input-value! lang-name)))}
       [logo-img (get info-map :lang) current-theme]]
      
      ;; Second cell - language name
@@ -271,7 +282,8 @@
                                                 :theme current-theme
                                                 :selection lang-name
                                                 :how-to-generate-table :by-lang
-                                                :results-table (generate-table lang-name :by-lang)}))))}
+                                                :results-table (generate-table lang-name :by-lang)}))
+                          (set-input-value! lang-name)))}
        (get info-map :lang)]
      
      [:td {:style {:padding "12px 30px"
@@ -373,7 +385,8 @@
                                 :hidden-langs (:hidden-langs @state)
                                 :selection language-name
                                 :how-to-generate-table :by-lang
-                                :results-table (generate-table language-name :by-lang)})))))
+                                :results-table (generate-table language-name :by-lang)}))
+            (set-input-value! language-name))))
       ::stylefy/mode {:on-hover {:background-color (:hover colors)}}}
      
      ;; Language logo cell
@@ -385,7 +398,8 @@
                                              :theme current-theme
                                              :selection language-name
                                              :how-to-generate-table :by-lang
-                                             :results-table (generate-table language-name :by-lang)})))}
+                                             :results-table (generate-table language-name :by-lang)}))
+                       (set-input-value! language-name))}
       [logo-img language-name current-theme]]
      
      ;; Language name cell
@@ -398,7 +412,8 @@
                                              :theme current-theme
                                              :selection language-name
                                              :how-to-generate-table :by-lang
-                                             :results-table (generate-table language-name :by-lang)})))}
+                                             :results-table (generate-table language-name :by-lang)}))
+                       (set-input-value! language-name))}
       language-name]
      
      ;; Algorithm cells - one for each algorithm ID
@@ -419,7 +434,8 @@
                                                   :theme current-theme
                                                   :selection algo-id
                                                   :how-to-generate-table :by-algo-id
-                                                  :results-table (generate-table algo-id :by-algo-id)})))} 
+                                                  :results-table (generate-table algo-id :by-algo-id)}))
+                             (set-input-value! (get-algo (first matching-entries))))} 
             (format-algorithm-with-fonts (get-algo (first matching-entries)) language-name (get (first matching-entries) :expr))]
            
            ;; Algorithm not found for this language
@@ -778,7 +794,8 @@
      [:label (@debug :info)]
      [:br]
      [:input
-      {:spellcheck "false"
+      {:id "search-input"
+       :spellcheck "false"
        :focus true
        :style (styles/input-style current-theme)
        :on-change
@@ -846,7 +863,13 @@
                              :show-expressions show-expressions
                              :show-libraries show-libraries
                              :how-to-generate-table how-to-generate-table
-                             :results-table (generate-table selection how-to-generate-table)}))))))
+                             :results-table (generate-table selection how-to-generate-table)}))
+        (let [display-value (case how-to-generate-table
+                              :by-algo-id (or (get-algo-name-for-id q) q)
+                              :by-lang q
+                              :by-algo q
+                              q)]
+          (set-input-value! display-value))))))
 
 (defn render! []
   (init-theme)

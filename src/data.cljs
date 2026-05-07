@@ -82,6 +82,7 @@
 "C#@Where@Enumerable@3" {:lang "C#" :algo "Where" :lib "Enumerable" :id 3 :doc "https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.where?view=netcore-3.1" :sig "-" :expr false}
 "C++@filter@range-v3@3" {:lang "C++" :algo "filter" :lib "range-v3" :id 3 :doc "https://ericniebler.github.io/range-v3/index.html#tutorial-views" :sig "-" :expr false}
 "C++@filter@<ranges>@3" {:lang "C++" :algo "filter" :lib "<ranges>" :id 3 :doc "https://en.cppreference.com/w/cpp/ranges/filter_view" :sig "-" :expr false}
+"C++@copy_if@<algorithm>@3" {:lang "C++" :algo "copy_if" :lib "<algorithm>" :id 3 :doc "https://en.cppreference.com/w/cpp/algorithm/copy_if" :sig "-" :expr false}
 "Clojure@filter@core@3" {:lang "Clojure" :algo "filter" :lib "core" :id 3 :doc "https://clojuredocs.org/clojure.core/filter" :sig "-" :expr false}
 "D@filter@algorithm@3" {:lang "D" :algo "filter" :lib "algorithm" :id 3 :doc "https://dlang.org/library/std/algorithm/iteration/filter.html" :sig "-" :expr false}
 "Elixir@filter@Enum@3" {:lang "Elixir" :algo "filter" :lib "Enum" :id 3 :doc "https://hexdocs.pm/elixir/Enum.html#filter/2" :sig "-" :expr false}

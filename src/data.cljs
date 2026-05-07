@@ -129,7 +129,7 @@
 "Rust@scan@iter@4" {:lang "Rust" :algo "scan" :lib "iter" :id 4 :doc "https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan" :sig "-" :expr false}
 "Scala@scan@various@4" {:lang "Scala" :algo "scan" :lib "various" :id 4 :doc "https://scala-lang.org/api/current/scala/collection/IterableOps.html#scan-fffff9e1" :sig "-" :expr false}
 "Swift@reductions@Algorithms@4" {:lang "Swift" :algo "reductions" :lib "Algorithms" :id 4 :doc "https://swiftpackageindex.com/apple/swift-algorithms/main/documentation/algorithms/swift/sequence/reductions(_:)" :sig "-" :expr false}
-"TinyAPL@↟ (on prefixes)@-@4" {:lang "TinyAPL" :algo "↟ (on prefixes)" :lib "-" :id 4 :doc "https://tinyapl.rubenverg.com/docs/primitive/on_prefixes" :sig "-" :expr false}
+"TinyAPL@\\ (on prefixes)@-@4" {:lang "TinyAPL" :algo "\\ (on prefixes)" :lib "-" :id 4 :doc "https://tinyapl.rubenverg.com/docs/primitive/on_prefixes" :sig "-" :expr false}
 "Uiua@\\ (scan)@-@4" {:lang "Uiua" :algo "\\ (scan)" :lib "-" :id 4 :doc "https://www.uiua.org/docs/scan" :sig "-" :expr false}
 "q@scan@-@4" {:lang "q" :algo "scan" :lib "-" :id 4 :doc "https://code.kx.com/q/ref/over/" :sig "-" :expr false}
 "☾@Ϝ  (accumulate)@-@4" {:lang "☾" :algo "Ϝ  (accumulate)" :lib "-" :id 4 :doc "https://ganer.xyz/moon/?code=%22docs%20are%20WIP%22%E2%A8%9D%F3%B0%BB%BE%E2%A8%81%E2%98%BE" :sig "-" :expr false}
@@ -140,7 +140,7 @@
 "Haskell@mapAdjacent@Data.List.HT@5" {:lang "Haskell" :algo "mapAdjacent" :lib "Data.List.HT" :id 5 :doc "https://hackage.haskell.org/package/utility-ht-0.0.15/docs/Data-List-HT.html#v:mapAdjacent" :sig "-" :expr false}
 "Kotlin@zipWithNext@collections@5" {:lang "Kotlin" :algo "zipWithNext" :lib "collections" :id 5 :doc "https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip-with-next.html" :sig "-" :expr false}
 "Python@pairwise@itertools@5" {:lang "Python" :algo "pairwise" :lib "itertools" :id 5 :doc "https://docs.python.org/3/library/itertools.html#itertools.pairwise" :sig "-" :expr false}
-"TinyAPL@↡ (on infixes)@-@5" {:lang "TinyAPL" :algo "↡ (on infixes)" :lib "-" :id 5 :doc "https://tinyapl.rubenverg.com/docs/primitive/on_infixes" :sig "-" :expr false}
+"TinyAPL@⌺ (on infixes)@-@5" {:lang "TinyAPL" :algo "⌺ (on infixes)" :lib "-" :id 5 :doc "https://tinyapl.rubenverg.com/docs/primitive/on_infixes" :sig "-" :expr false}
 "Uiua@⧈ (stencil)@-@5" {:lang "Uiua" :algo "⧈ (stencil)" :lib "-" :id 5 :doc "https://www.uiua.org/docs/stencil" :sig "-" :expr false}
 "q@prior@-@5" {:lang "q" :algo "prior" :lib "-" :id 5 :doc "https://code.kx.com/q/ref/prior/" :sig "-" :expr false}
 "APL@∘. (outer product)@-@6" {:lang "APL" :algo "∘. (outer product)" :lib "-" :id 6 :doc "http://microapl.com/apl_help/ch_020_020_890.htm" :sig "-" :expr false}

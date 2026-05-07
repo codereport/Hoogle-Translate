@@ -257,6 +257,7 @@
 "Go@Compact@slices@14" {:lang "Go" :algo "Compact" :lib "slices" :id 14 :doc "https://pkg.go.dev/slices#Compact" :sig "-" :expr false}
 "JavaScript@uniq@ramda@14" {:lang "JavaScript" :algo "uniq" :lib "ramda" :id 14 :doc "https://ramdajs.com/docs/#uniq" :sig "-" :expr false}
 "Mathematica@DeleteAdjacentDuplicates@-@14" {:lang "Mathematica" :algo "DeleteAdjacentDuplicates" :lib "-" :id 14 :doc "http://reference.wolfram.com/language/ref/DeleteAdjacentDuplicates.html" :sig "-" :expr false}
+"C++@adjacent_filter@range-v3@14" {:lang "C++" :algo "adjacent_filter" :lib "range-v3" :id 14 :doc "https://ericniebler.github.io/range-v3/structranges_1_1views_1_1adjacent__filter__fn.html" :sig "-" :expr false}
 "Rust@dedup@itertools@14" {:lang "Rust" :algo "dedup" :lib "itertools" :id 14 :doc "https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.dedup" :sig "-" :expr false}
 "Shell@uniq@-@14" {:lang "Shell" :algo "uniq" :lib "-" :id 14 :doc "https://ss64.com/bash/uniq.html" :sig "-" :expr false}
 "Uiua@◌°▽ (pop un keep)@-@14" {:lang "Uiua" :algo "◌°▽ (pop un keep)" :lib "-" :id 14 :doc "https://www.uiua.org/docs/keep" :sig "-" :expr true}
